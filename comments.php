@@ -25,7 +25,7 @@
 
 	<ol class="commentlist">
 
-	<?php foreach ($comments as $comment) : ?>
+	<!-- <?php foreach ($comments as $comment) : ?>
 
 		<li class="<?php echo $oddcomment; ?>" id="comment-<?php comment_ID() ?>">
 			<cite><?php comment_author_link() ?></cite> Says:
@@ -45,7 +45,10 @@
 		else $oddcomment = 'alt';
 	?>
 
-	<?php endforeach; /* end for each comment */ ?>
+	<?php endforeach; /* end for each comment */ ?> -->
+		<?php 
+			wp_list_comments();
+		?>
 
 	</ol>
 

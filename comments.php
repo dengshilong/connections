@@ -47,7 +47,7 @@
 
 	<?php endforeach; /* end for each comment */ ?> -->
 		<?php 
-			wp_list_comments();
+			wp_list_comments()；
 		?>
 
 	</ol>

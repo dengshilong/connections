@@ -13,7 +13,16 @@
 	<ul><li><?php bloginfo('description'); ?></li></ul>
 	<ul><?php if( !function_exists('dynamic_sidebar') || !dynamic_sidebar('小工具') ) : ?><?php endif; ?></ul>	
 <h2><?php _e('Links'); ?></h2>
-	<ul><?php get_links('-1', '<li>', '</li>', ' '); ?></ul>
+	<ul>
+        <?php 
+        $bookmarks = get_bookmarks(); 
+        if ( !empty($bookmarks) ) {
+            foreach ($bookmarks as $bookmark) {
+                echo "<li><a href=\"$bookmark->link_url\" title=\"$bookmark->link_description\" target=\"_blank\">$bookmark->link_name</a></li>";
+            }
+        }
+        ?>
+    </ul>
 
 <h2><?php _e('Categories:'); ?></h2>
 	<ul><?php wp_list_categories('style=none&show_count=1');    ?></ul>

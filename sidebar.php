@@ -16,7 +16,7 @@
 	<ul><?php get_links('-1', '<li>', '</li>', ' '); ?></ul>
 
 <h2><?php _e('Categories:'); ?></h2>
-	<ul><?php wp_list_cats('optioncount=1');    ?></ul>
+	<ul><?php wp_list_categories('style=none&show_count=1');    ?></ul>
 
 
 <h2><?php _e('Monthly:'); ?></h2>

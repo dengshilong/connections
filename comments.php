@@ -47,7 +47,11 @@
 
 	<?php endforeach; /* end for each comment */ ?> -->
 		<?php 
-			wp_list_comments()；
+            wp_list_comments( array(
+                    'style'       => 'ol',
+                    'short_ping'  => true,
+                    'avatar_size' => 56,
+            ) );
 		?>
 
 	</ol>

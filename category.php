@@ -24,12 +24,24 @@
 			<h3><?php echo single_cat_title(); ?></h3>
 			<div class="post-info">Archived Posts from this Category</div>		
 			<br/>				
-			<?php foreach ($posts as $post) : start_wp(); ?>				
-				<div class="post">
-					<?php require('post.php'); ?>
-					<?php comments_template(); // Get wp-comments.php template ?>
-				</div>
-			<?php endforeach; ?>
+            <?php if ( have_posts() ) : ?>
+                <?php
+                // Start the loop.
+                while ( have_posts() ) : the_post();
+                    /*
+                     * Include the Post-Format-specific template for the content.
+                     * If you want to override this in a child theme, then include a file
+                     * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+                     */
+                    get_template_part( 'content', get_post_format() );
+
+                // End the loop.
+                endwhile;
+                // If no content, include the "No posts found" template.
+                else :
+                    get_template_part( 'content', 'none' );
+                endif;
+            ?>
 			<p align="center"><?php posts_nav_link() ?></p>		
 		<?php } else { ?>
 		<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>

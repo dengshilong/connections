@@ -19,17 +19,24 @@
 	<?php get_header()?>	
 	<div id="main">
 	<div id="content">
-			<?php if ($posts) : foreach ($posts as $post) : start_wp(); ?>
-			<div class="post">
-				<?php require('post.php'); ?>
-							<div id="next_and_prev">
-<span id="prev"> <?php previous_post_link(); ?></span><span id="next"><?php next_post_link(); ?></span> 
-</div>
-				<?php comments_template(); // Get wp-comments.php template ?>
-			</div>
-			<?php endforeach; else: ?>
-			<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
-			<?php endif; ?>
+					<div id="next_and_prev">
+                        <span id="prev"> <?php previous_post_link(); ?></span><span id="next"><?php next_post_link(); ?></span> 
+                    </div>
+            <?php if ( have_posts() ) : ?>
+                <?php
+                // Start the loop.
+                while ( have_posts() ): the_post();
+                    get_template_part( 'content', get_post_format() );
+                    // If comments are open or we have at least one comment, load up the comment template.
+                    if ( comments_open() || get_comments_number() ) :
+                        comments_template();
+                    endif;
+                endwhile;
+                // If no content, include the "No posts found" template.
+            else :
+                get_template_part( 'content', 'none' );
+            endif;
+            ?>
 		<p align="center"><?php posts_nav_link() ?></p>		
 	</div>
 	<div id="sidebar">

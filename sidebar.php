@@ -37,6 +37,7 @@
 	
 	<ul>
 		<li>
-			<a title="RSS2 Feed for Posts" href="<?php bloginfo('rss2_url'); ?>">Posts</a> | <a title="RSS2 Feed for Comments" href="<?php bloginfo('comments_rss2_url'); ?>">Comments</a></li>	
+			<a title="RSS2 Feed for Posts" href="<?php bloginfo('rss2_url'); ?>">Posts</a> 
+        </li>
 	</ul>	
 		

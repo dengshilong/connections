@@ -27,7 +27,7 @@
 			<div class="page-content">
 				<?php the_content(); ?>
 	
-				<?php link_pages('<p><strong>Pages:</strong> ', '</p>', 'number'); ?>
+				<?php wp_link_pages('<p><strong>Pages:</strong> ', '</p>', 'number'); ?>
 	
 			</div>
 		</div>
